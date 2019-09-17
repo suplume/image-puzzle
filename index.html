@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="my-5">
+      <div id ="error" class="alert alert-danger" role="alert" style="display: none;">
+        <strong>Error!</strong><span id="errorMessage"></span>
+      </div>
+
+      <h2>画像暗号化</h2>
+      <p class="lead">分割方法を3種類の中から選択して、画像をアップロード</p>
+      <div class="input-group my-3">
+        <div class="btn-group btn-group-toggle input-group-prepend" data-toggle="buttons">
+          <label class="btn btn-primary active"><input type="radio" name="division" value="1" autocomplete="off" checked>縦方向分割</label>
+          <label class="btn btn-primary"><input type="radio" name="division" value="2" autocomplete="off">横方向分割</label>
+          <label class="btn btn-primary"><input type="radio" name="division" value="3" autocomplete="off">縦横方向分割</label>
+        </div>
+        <div class="custom-file">
+          <input type="file" name="file" class="custom-file-input" id="file">
+          <label class="custom-file-label" for="file">ファイルを選択</label>
+        </div>
+      </div>
+
+      <div id="widthButtons" class="btn-group btn-group-toggle input-group mb-3" data-toggle="buttons" style="display: none;">
+        <span class="input-group-text">縦分割幅</span>
+        <label class="btn btn-primary"><input type="radio" name="widthDivision" autocomplete="off"></label>
+      </div>
+
+      <div id="heightButtons" class="btn-group btn-group-toggle input-group mb-3" data-toggle="buttons" style="display: none;">
+        <span class="input-group-text">横分割幅</span>
+        <label class="btn btn-primary"><input type="radio" name="heightDivision" autocomplete="off"></label>
+      </div>
+
+      <div class="text-center">
+        <canvas id="encryption"></canvas>
+      </div>
+
+      <div class="text-center">
+        <button type="button" id="encryptionDownloadButton" class="btn btn-primary btn-lg" style="display: none;">暗号化画像保存</button>
+      </div>
+
+      <h2>画像復号化</h2>
+      <p class="lead">画像をアップロードして、復号化鍵を入力してから復号化ボタンをクリック</p>
+      <div class="input-group my-3">
+        <div class="custom-file">
+          <input type="file" name="file" class="custom-file-input" id="decryptionFile">
+          <label class="custom-file-label" for="file">ファイルを選択</label>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <canvas id="decryption"></canvas>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">復号化用鍵</span>
+        </div>
+        <input type="text" class="form-control" id="decryptKey">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">HTMLコード</span>
+        </div>
+        <input type="text" class="form-control" id="htmlCode">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">JSコード</span>
+        </div>
+        <input type="text" class="form-control" id="jsCode">
+      </div>
+      <div>
+      </div>
+      <div class="text-center">
+        <button type="button" id="decryptionButton" class="btn btn-primary btn-lg mb-3">復号化</button>
+        <br>
+        <button type="button" id="decryptionDownloadButton" class="btn btn-primary btn-lg" style="display: none;">復号化画像保存</button>
+      <div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="puzzle.js"></script>
+</body>
+</html>
